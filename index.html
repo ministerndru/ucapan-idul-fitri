@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Idul Fitri 1447 H - Keluarga Sagung Wibowo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1b4d3e;
+            --secondary: #d4af37;
+            --accent: #f8f1e5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d261f;
+            color: var(--primary);
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .bg-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/islamic-art.png');
+            background-repeat: repeat;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(27, 77, 62, 0.98) 0%, rgba(13, 38, 31, 1) 100%);
+        }
+
+        /* Animasi Sinar Berjatuhan */
+        .light-streak {
+            position: fixed;
+            top: -100px;
+            width: 2px;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.4), transparent);
+            animation: fall linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+
+        /* Animasi Bintang Gemerlap */
+        .star {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .photo-overlay {
+            background: linear-gradient(to bottom, transparent 60%, rgba(27, 77, 62, 0.8) 100%);
+        }
+
+        .modal-fade-out {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Tombol Buka Efek Glow */
+        #startButton {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        #startButton:hover {
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-pattern min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Container untuk Efek Animasi (Sinar & Bintang) -->
+    <div id="animationContainer"></div>
+
+    <!-- Audio Takbir -->
+    <audio id="takbirAudio" loop preload="auto">
+        <source src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Takbir+Hari+Raya&filename=mt/MTI0NjEwNTYxMjQ2MDYx_1B1_2bn2O_2fyC0.MP3" type="audio/mpeg">
+    </audio>
+
+    <!-- Tombol Kontrol Musik -->
+    <div class="audio-control">
+        <button id="musicToggle" class="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-xl border border-[#d4af37] hover:scale-110 transition-all duration-300">
+            <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1b4d3e]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Konten Utama (Kartu Ucapan) -->
+    <main id="mainContent" class="relative z-10 max-w-lg w-full bg-white rounded-[2.5rem] shadow-2xl overflow-hidden animate__animated animate__fadeInUp" style="display: none;">
+        <div class="relative h-[22rem] sm:h-[26rem] overflow-hidden">
+            <img src="https://i.ibb.co.com/tpGGzKfn/Desain-tanpa-judul-7.png" 
+                 alt="Foto Keluarga Sagung Wibowo" 
+                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+            <div class="absolute inset-0 photo-overlay"></div>
+            <div class="absolute bottom-6 left-0 right-0 text-center">
+                <span class="text-white font-semibold text-xl tracking-wide drop-shadow-lg px-4 py-1 rounded-full border border-white/30 backdrop-blur-sm">Keluarga Sagung Wibowo</span>
+            </div>
+        </div>
+
+        <div class="p-8 sm:p-10 text-center hero-gradient text-white">
+            <h1 class="cursive text-5xl mb-4 text-[#d4af37]">Eid Mubarak</h1>
+            <p class="mb-6 text-sm tracking-[0.3em] font-light uppercase text-white/80">1 Syawal 1447 H</p>
+            
+            <div class="arabic text-4xl mb-8 leading-relaxed text-[#f8f1e5]">
+                تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ
+            </div>
+            
+            <div class="space-y-4 mb-8 text-center px-2">
+                <p class="text-xl font-medium leading-snug">Selamat Hari Raya Idul Fitri 1447 H</p>
+                <p class="text-base sm:text-lg font-light italic opacity-90 leading-relaxed text-balance">
+                    "Taqabbalallahu minna wa minkum, mohon maaf lahir dan bathin atas segala kesalahan (ucapan atau perbuatan) yang kami lakukan baik itu disengaja atau tidak disengaja."
+                </p>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="h-[1px] w-12 bg-[#d4af37]/50"></div>
+                <div class="w-2 h-2 rounded-full bg-[#d4af37]"></div>
+                <div class="h-[1px] w-12 bg-[#d4af37]/50"></div>
+            </div>
+
+            <button onclick="shareWhatsApp()" class="flex items-center justify-center w-full bg-white text-green-900 hover:bg-[#d4af37] hover:text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 shadow-xl group">
+                <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Kirim ke Kerabat
+            </button>
+            <p class="text-[10px] uppercase tracking-widest opacity-40 pt-4">© 2026 • Sagung Wibowo Family</p>
+        </div>
+    </main>
+
+    <!-- Overlay Pembuka -->
+    <div id="startModal" class="fixed inset-0 z-[200] flex items-center justify-center bg-green-950 p-6 overflow-hidden">
+        <div class="text-center relative z-10">
+            <!-- Ikon Pesan/Amplop -->
+            <div class="w-32 h-32 mx-auto mb-6 bg-[#d4af37] rounded-full flex items-center justify-center animate__animated animate__zoomIn shadow-[0_0_50px_rgba(212,175,55,0.4)]">
+                <svg viewBox="0 0 24 24" class="h-14 w-14 text-green-950" fill="currentColor">
+                    <path d="M20,4H4C2.89,4,2,4.89,2,6v12c0,1.11,0.89,2,2,2h16c1.11,0,2-0.89,2-2V6C22,4.89,21.11,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z" />
+                </svg>
+            </div>
+            
+            <h2 class="text-4xl text-white font-bold mb-3 tracking-widest animate__animated animate__fadeInDown">Assalamualaikum</h2>
+            <div class="w-16 h-1 bg-[#d4af37] mx-auto mb-6"></div>
+            <p class="text-white/80 mb-12 max-w-xs mx-auto text-xl font-light leading-relaxed animate__animated animate__fadeInUp">Ada ucapan khusus untuk Anda dari keluarga <br><span class="font-bold text-[#d4af37]">Sagung Wibowo</span></p>
+            
+            <button id="startButton" class="bg-[#d4af37] text-green-950 font-bold py-5 px-16 rounded-full hover:scale-105 active:scale-95 transition-all shadow-2xl uppercase tracking-[0.2em] text-sm animate__animated animate__pulse animate__infinite">
+                Buka Ucapan
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('animationContainer');
+
+        // Fungsi membuat Bintang Gemerlap
+        function createStars() {
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(star);
+            }
+        }
+
+        // Fungsi membuat Sinar Berjatuhan
+        function createLightStreaks() {
+            setInterval(() => {
+                const streak = document.createElement('div');
+                streak.className = 'light-streak';
+                streak.style.left = `${Math.random() * 100}vw`;
+                streak.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                streak.style.opacity = Math.random() * 0.5;
+                container.appendChild(streak);
+
+                // Hapus elemen setelah animasi selesai
+                setTimeout(() => streak.remove(), 4000);
+            }, 300);
+        }
+
+        createStars();
+        createLightStreaks();
+
+        // Logika Audio dan Modal
+        const audio = document.getElementById('takbirAudio');
+        const modal = document.getElementById('startModal');
+        const main = document.getElementById('mainContent');
+        const btn = document.getElementById('startButton');
+        const musicBtn = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        btn.addEventListener('click', function() {
+            audio.play().then(() => {
+                isPlaying = true;
+                updateIcon();
+            }).catch(e => console.warn("Audio play blocked"));
+
+            main.style.display = 'block';
+            modal.classList.add('modal-fade-out');
+            setTimeout(() => { modal.style.display = 'none'; }, 800);
+        });
+
+        musicBtn.onclick = function() {
+            if (isPlaying) audio.pause(); else audio.play();
+            isPlaying = !isPlaying;
+            updateIcon();
+        };
+
+        function updateIcon() {
+            if (isPlaying) {
+                musicIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />';
+            } else {
+                musicIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />';
+            }
+        }
+
+        function shareWhatsApp() {
+            const text = "Assalamualaikum Wr. Wb. 🙏\n\nKeluarga Sagung Wibowo mengucapkan Selamat Hari Raya Idul Fitri 1447 H. Taqabbalallahu minna wa minkum, mohon maaf lahir dan bathin atas segala kesalahan (ucapan atau perbuatan) yang kami lakukan baik itu disengaja atau tidak disengaja.\n\nLihat ucapan selengkapnya di sini: " + window.location.href;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
